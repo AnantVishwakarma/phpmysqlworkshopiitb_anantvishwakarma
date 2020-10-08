@@ -22,15 +22,14 @@
 
         $subject = "Thank you for your feedback!";
         $body = "Thank you, $name! Here's what we got from you.\n" . $feedback;
-        $headers = "From: admin@company.com";
-        if(!mail($to, $subject, wordwrap($body,70), $headers))
+        if(!mail($to, $subject, wordwrap($body,70)))
         {
             echo "Failed to send mail to " . $to;
         }
 
         $adminemail = "admin@company.com";
         $subject = "Feedback from $name";
-        $body = "Received feedback from $name\n\nemail address: $email\n\nFeedback: $feedback";
+        $body = "Received feedback from $name\n\nemail address: $to\n\nFeedback: $feedback";
         if(!mail($adminemail, $subject, wordwrap($body,70)))
         {
             echo "Failed to send mail to admin: " . $adminemail;
